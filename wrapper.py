@@ -33,6 +33,7 @@ def get_last_transactions():
     order = request.args.get('order')
     gte = request.args.get('gte')
     lte = request.args.get('lte')
+    term = request.args.get('term')
 
     sort =  {"sort" : [ { sort : {"order" : order}}]}
 
@@ -44,7 +45,16 @@ def get_last_transactions():
     # order = "desc"
     # gte = "now-1h"
     # lte = "now"
-    aggs = {"aggs": { "group_by_data": { "terms": { "field": field, "size": size } } } }
+
+    # for data field can be account_history.account.keyword and term 1.2.282
+
+    if type == "aggergator":
+        aggs = {"aggs": { "group_by_data": { "terms": { "field": field, "size": size } } } }
+        query = {"query": {"bool": {"must": [{
+            "range": {"block_data.block_time": {"gte": gte, "lte": lte}}}]}}}
+    elif type == "data":
+        query = {"query": {"bool": {"must": [{
+            "range": {"block_data.block_time": {"gte": gte, "lte": lte}}}, {"term": {field: term}}]}}}
 
     fromm = {"from" : 0}
     size = {"size": size}
@@ -60,10 +70,6 @@ def get_last_transactions():
 
     res = es.search(index="graphene-*", body=body)
 
-    print res
-
-    #print("Got %d Hits:" % res['hits']['total'])
-
     results = []
 
     if type == "aggergator":
@@ -73,10 +79,6 @@ def get_last_transactions():
     elif type == "data":
         for d in res["hits"]["hits"]:
             results.append(d["_source"])
-
-
-    #for hit in res['hits']['hits']:
-    #    results.append(hit["_source"])
 
     return jsonify(results)
 

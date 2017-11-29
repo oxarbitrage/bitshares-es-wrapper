@@ -9,20 +9,6 @@ from elasticsearch import Elasticsearch
 es = Elasticsearch(timeout=30)
 app = Flask(__name__)
 
-@app.route('/')
-def hello_world():
-    body = {"query": {"bool": {"must": [{"term": {"account_history.account.keyword": "1.2.282"}}, {
-        "range": {"block_data.block_time": {"gte": "2015-10-26T00:00:00", "lte": "2015-10-29T23:59:59"}}}]}}}
-
-    res = es.search(index="graphene-*", body=body)
-    print("Got %d Hits:" % res['hits']['total'])
-
-    results = []
-    for hit in res['hits']['hits']:
-        results.append(hit["_source"])
-
-    return jsonify(results)
-
 @app.route('/get_data')
 def get_last_transactions():
 
@@ -48,23 +34,25 @@ def get_last_transactions():
 
     # for data field can be account_history.account.keyword and term 1.2.282
 
+    body = sort.copy()
+
     if type == "aggergator":
         aggs = {"aggs": { "group_by_data": { "terms": { "field": field, "size": size } } } }
         query = {"query": {"bool": {"must": [{
             "range": {"block_data.block_time": {"gte": gte, "lte": lte}}}]}}}
+
+        body.update(aggs)
+        body.update(query)
+
     elif type == "data":
         query = {"query": {"bool": {"must": [{
             "range": {"block_data.block_time": {"gte": gte, "lte": lte}}}, {"term": {field: term}}]}}}
 
+        body.update(query)
+
     fromm = {"from" : 0}
     size = {"size": size}
 
-    query = {"query": {"bool": {"must": [{
-        "range": {"block_data.block_time": {"gte": gte, "lte": lte}}}]}}}
-
-    body = sort.copy()
-    body.update(aggs)
-    body.update(query)
     body.update(fromm)
     body.update(size)
 

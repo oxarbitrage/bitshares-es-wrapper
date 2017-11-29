@@ -36,7 +36,7 @@ def get_last_transactions():
 
     body = sort.copy()
 
-    if type == "aggergator":
+    if type == "aggregator":
         aggs = {"aggs": { "group_by_data": { "terms": { "field": field, "size": size } } } }
         query = {"query": {"bool": {"must": [{
             "range": {"block_data.block_time": {"gte": gte, "lte": lte}}}]}}}
@@ -60,7 +60,7 @@ def get_last_transactions():
 
     results = []
 
-    if type == "aggergator":
+    if type == "aggregator":
         for b in res['aggregations']['group_by_data']["buckets"]:
             results.append({"key": b["key"], "doc_count": b["doc_count"]})
 

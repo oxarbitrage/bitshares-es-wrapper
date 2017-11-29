@@ -1,0 +1,1 @@
+# Bitshares ElasticSearch Wrapper - BESW

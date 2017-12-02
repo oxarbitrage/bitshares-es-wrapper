@@ -26,12 +26,12 @@ Get all operations in history with pager, similar to bitshares node call.
  
  get history of account sort by date:
 
-`http://209.188.21.157:5000/get_account_history?account_id=1.2.282&from=100&size=10&sort_by=block_data.block_time`  
+[View Online Sample](http://209.188.21.157:5000/get_account_history?account_id=1.2.282&from=100&size=10&sort_by=block_data.block_time)
 
 sort by operation_time
 
-`http://209.188.21.157:5000/get_account_history?account_id=1.2.282&from=100&size=10&sort_by=operation_type`
+[View Online Sample](http://209.188.21.157:5000/get_account_history?account_id=1.2.282&from=100&size=10&sort_by=operation_type)
 
 reverse order:
 
-`http://209.188.21.157:5000/get_account_history?account_id=1.2.282&from=100&size=10&sort_by=-operation_type`
+[View Online Sample](http://209.188.21.157:5000/get_account_history?account_id=1.2.282&from=100&size=10&sort_by=-operation_type)

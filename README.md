@@ -1,4 +1,6 @@
-# Bitshares ElasticSearch Wrapper - BESW
+# Bitshares ElasticSearch Wrapper
+
+Wrapper for final user applications to interact with account data from the bitshares blockchain stored by  `bitshares-core` with `elasticsearch-plugin` running. 
 
 ## Install
 
@@ -6,9 +8,11 @@
 
 `pip install elasticsearch`
 
-Install python elasticsearch high level lib to easy query:
+- Install python elasticsearch high level lib to easy query:
 
 `pip install elasticsearch-dsl`
+
+- Clone and run it by flask:
 
 ```
 git clone https://github.com/oxarbitrage/bitshares-es-wrapper.git

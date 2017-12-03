@@ -24,7 +24,7 @@ flask run --host=0.0.0.0
  
  ### get_account history
  
-Get all operations in history with pager, similar to bitshares node call.
+Get all operations in history with pager, similar to bitshares node call but with fullter features like search by date, filter by operation and others. Check the samples on how versatile the call can be.
  
  #### Samples:
  

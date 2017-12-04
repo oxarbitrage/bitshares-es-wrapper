@@ -51,3 +51,7 @@ same as before but get only transfer operations:
 it is even possible to make queries to all the accounts in a period of time, getting the network activity in that range:
 
 [View Online Sample](http://209.188.21.157:5000/get_account_history?from=0&size=10&sort_by=-block_data.block_time&from_date=2017-09-01&to_date=now)
+
+get the fill orders from a trading bot during a selected deep period of time:
+
+[View Online Sample](http://209.188.21.157:5000/get_account_history?account_id=1.2.36449&from=0&size=10&sort_by=-block_data.block_time&from_date=2016-10-01&to_date=2016-12-01&operation_type=4)

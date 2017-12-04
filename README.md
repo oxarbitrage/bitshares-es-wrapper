@@ -39,3 +39,15 @@ sort by operation_time
 reverse order:
 
 [View Online Sample](http://209.188.21.157:5000/get_account_history?account_id=1.2.282&from=100&size=10&sort_by=-operation_type)
+
+get orders from an account and filter by date range from 2017-09-09 to current day and time. sort by time desc:
+
+[View Online Sample](http://209.188.21.157:5000/get_account_history?account_id=1.2.282&from=0&size=10&sort_by=-block_data.block_time&from_date=2017-09-01&to_date=now)
+
+same as before but get only transfer operations:
+
+[View Online Sample](http://209.188.21.157:5000/get_account_history?account_id=1.2.282&from=0&size=10&sort_by=-block_data.block_time&from_date=2017-09-01&to_date=now&operation_type=0)
+
+it is even possible to make queries to all the accounts in a period of time, getting the network activity in that range:
+
+[View Online Sample](http://209.188.21.157:5000/get_account_history?from=0&size=10&sort_by=-block_data.block_time&from_date=2017-09-01&to_date=now)

@@ -55,3 +55,15 @@ it is even possible to make queries to all the accounts in a period of time, get
 get the fill orders from a trading bot during a selected deep period of time:
 
 [View Online Sample](http://209.188.21.157:5000/get_account_history?account_id=1.2.36449&from=0&size=10&sort_by=-block_data.block_time&from_date=2016-10-01&to_date=2016-12-01&operation_type=4)
+
+by using the field `type` you can get counts of data, the following will get the number of operations made by the entire blockchain in 1 month separated by operation type by using the `agg_field`:
+
+[View Online Sample](http://209.188.21.157:5000/get_account_history?from=0&size=100&from_date=2017-10-01&to_date=2017-10-31&type=aggs&agg_field=operation_type)
+
+include an account if to get the data only for a particular user in the same timeframe:
+ 
+[View Online Sample](http://209.188.21.157:5000/get_account_history?account_id=1.2.282&from=0&size=100&from_date=2017-10-01&to_date=2017-10-31&type=aggs&agg_field=operation_type)
+
+group by other fields as trx id i nthe last hour:
+
+[View Online Sample](http://209.188.21.157:5000/get_account_history?from_date=now-1h&to_date=now&type=aggs&agg_field=block_data.trx_id.keyword)

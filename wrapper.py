@@ -9,6 +9,8 @@ from elasticsearch_dsl.exceptions import IllegalOperation
 
 es = Elasticsearch(timeout=30)
 app = Flask(__name__)
+from flask_cors import CORS, cross_origin
+CORS(app)
 
 @app.route('/get_account_history')
 def get_account_history():

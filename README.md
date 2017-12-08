@@ -12,6 +12,10 @@ Wrapper for final user applications to interact with account data from the bitsh
 
 `pip install elasticsearch-dsl`
 
+- Install flask CORS to query the wrapper from anywhere:
+
+`pip install flask-cors`
+
 - Clone and run it by flask:
 
 ```

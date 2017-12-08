@@ -15,15 +15,15 @@ CORS(app)
 @app.route('/get_account_history')
 def get_account_history():
 
-    account_id = request.args.get('account_id') if 'account_id' in request.args else False
-    operation_type = request.args.get('operation_type') if 'operation_type' in request.args else False
-    from_ = request.args.get('from_') if 'from_' in request.args else 0
-    size = request.args.get('size') if 'size' in request.args else 10
-    from_date = request.args.get('from_date') if 'from_date' in request.args else "2015-10-10"
-    to_date = request.args.get('to_date') if 'to_date' in request.args else "now"
-    sort_by = request.args.get('sort_by') if 'sort_by' in request.args else "-block_data.block_time"
-    type = request.args.get('type') if 'type' in request.args else "data"
-    agg_field = request.args.get('agg_field') if 'agg_field' in request.args else "operation_type"
+    account_id = request.args.get('account_id', False)
+    operation_type = request.args.get('operation_type', False)
+    from_ = request.args.get('from_', 0)
+    size = request.args.get('size', 10)
+    from_date = request.args.get('from_date', "2015-10-10")
+    to_date = request.args.get('to_date', "now")
+    sort_by = request.args.get('sort_by', "-block_data.block_time")
+    type = request.args.get('type', "data")
+    agg_field = request.args.get('agg_field', "operation_type")
 
     s = Search(using=es, index="graphene-*", extra={"size": size, "from": from_})
 

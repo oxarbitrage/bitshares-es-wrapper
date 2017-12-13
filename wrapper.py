@@ -25,7 +25,10 @@ def get_account_history():
     type = request.args.get('type', "data")
     agg_field = request.args.get('agg_field', "operation_type")
 
-    s = Search(using=es, index="graphene-*", extra={"size": size, "from": from_})
+    if type != "data":
+        s = Search(using=es, index="graphene-*")
+    else:
+        s = Search(using=es, index="graphene-*", extra={"size": size, "from": from_})
 
     q = Q()
     if account_id and operation_type:
@@ -39,7 +42,7 @@ def get_account_history():
     s.query = q & range_query
 
     if type != "data":
-        s.aggs.bucket('per_field', 'terms', field=agg_field)
+        s.aggs.bucket('per_field', 'terms', field=agg_field, size=size)
 
     s = s.sort(sort_by)
 

@@ -12,6 +12,9 @@ app = Flask(__name__)
 from flask_cors import CORS, cross_origin
 CORS(app)
 
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000)
+
 @app.route('/get_account_history')
 def get_account_history():
 

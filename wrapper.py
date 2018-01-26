@@ -7,7 +7,7 @@ from elasticsearch import Elasticsearch
 from elasticsearch_dsl import Search, query, Q, DocType, utils
 from elasticsearch_dsl.exceptions import IllegalOperation
 
-es = Elasticsearch(timeout=30)
+es = Elasticsearch(timeout=60)
 app = Flask(__name__)
 from flask_cors import CORS, cross_origin
 CORS(app)

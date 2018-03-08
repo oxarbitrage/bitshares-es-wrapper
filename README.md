@@ -26,7 +26,7 @@ flask run --host=0.0.0.0
  
  ## Available Calls
  
- ### get_account history
+ ### get_account_history
  
 Get all operations in history with pager, similar to bitshares node call but with fullter features like search by date, filter by operation and others. Check the samples on how versatile the call can be.
  
@@ -64,10 +64,17 @@ by using the field `type` you can get counts of data, the following will get the
 
 [View Online Sample](http://185.208.208.184:5000/get_account_history?from_date=2017-11-01&to_date=2017-11-30&type=aggs&agg_field=operation_type)
 
-include an account if to get the data only for a particular user in the same timeframe:
+include an account to get the data only for a particular user in the same timeframe as above:
  
 [View Online Sample](http://185.208.208.184:5000/get_account_history?account_id=1.2.282&from_date=2017-11-01&to_date=2017-11-30&type=aggs&agg_field=operation_type)
 
 group by other fields as trx id in the last hour:
 
 [View Online Sample](http://185.208.208.184:5000/get_account_history?from_date=now-1h&to_date=now&type=aggs&agg_field=block_data.trx_id.keyword)
+
+
+ ### get_single_operation
+
+get a single operation:
+
+[View Online Sample](http://185.208.208.184:5000/get_single_operation?operation_id=1.11.70234)

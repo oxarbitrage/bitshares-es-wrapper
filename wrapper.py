@@ -49,7 +49,7 @@ def get_account_history():
 
     s = s.sort(sort_by)
 
-    print s.to_dict()
+    #print s.to_dict()
 
     response = s.execute()
     #print response
@@ -63,6 +63,26 @@ def get_account_history():
             results.append(field.to_dict())
 
     return jsonify(results)
+
+
+@app.route('/get_single_operation')
+def get_single_operation():
+
+    operation_id = request.args.get('operation_id', "1.11.0")
+
+    s = Search(using=es, index="graphene-*", extra={"size": 1})
+
+    q = Q("match", account_history__operation_id=operation_id)
+
+    s.query = q
+    response = s.execute()
+    results = []
+    for hit in response:
+        results.append(hit.to_dict())
+
+    return jsonify(results)
+
+
 
 if __name__ == '__main__':
     app.run()

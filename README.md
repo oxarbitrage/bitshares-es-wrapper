@@ -78,3 +78,9 @@ group by other fields as trx id in the last hour:
 get a single operation:
 
 [View Online Sample](http://185.208.208.184:5000/get_single_operation?operation_id=1.11.70234)
+
+### get_trx
+
+get the operations inside a transaction hash
+
+[View Online Sample](http://185.208.208.184:5000/get_trx?trx=738be2bd22e2da31d587d281ea7ee9bd02b9dbf0)

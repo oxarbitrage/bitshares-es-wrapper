@@ -82,6 +82,25 @@ def get_single_operation():
 
     return jsonify(results)
 
+@app.route('/get_trx')
+def get_trx():
+
+    trx = request.args.get('trx', "738be2bd22e2da31d587d281ea7ee9bd02b9dbf0")
+    from_ = request.args.get('from_', 0)
+    size = request.args.get('size', 10)
+
+    s = Search(using=es, index="graphene-*", extra={"size": size, "from": from_})
+
+    q = Q("match", block_data__trx_id=trx)
+
+    s.query = q
+    response = s.execute()
+    results = []
+    for hit in response:
+        results.append(hit.to_dict())
+
+    return jsonify(results)
+
 
 
 if __name__ == '__main__':

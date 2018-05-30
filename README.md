@@ -2,6 +2,8 @@
 
 Wrapper for final user applications to interact with account data from the bitshares blockchain stored by  `bitshares-core` with `elasticsearch-plugin` running. 
 
+In order to install this wrapper you need to have a bitshares node running with elasticsearch plugin. Refer to this document on how to do that: https://github.com/bitshares/bitshares-core/wiki/ElasticSearch-Plugin
+
 ## Install
 
 - Install python elasticsearch low level lib:

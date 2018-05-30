@@ -7,10 +7,20 @@ from elasticsearch import Elasticsearch
 from elasticsearch_dsl import Search, query, Q, DocType, utils
 from elasticsearch_dsl.exceptions import IllegalOperation
 
+from flasgger import Swagger
+
 es = Elasticsearch(timeout=60)
 app = Flask(__name__)
 from flask_cors import CORS, cross_origin
 CORS(app)
+
+app = Flask(__name__)
+app.config['SWAGGER'] = {
+    'title': 'Bitshares ES API',
+    'uiversion': 2
+}
+Swagger(app, template_file='wrapper.yaml')
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)

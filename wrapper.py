@@ -14,7 +14,6 @@ app = Flask(__name__)
 from flask_cors import CORS, cross_origin
 CORS(app)
 
-app = Flask(__name__)
 app.config['SWAGGER'] = {
     'title': 'Bitshares ES API',
     'uiversion': 2

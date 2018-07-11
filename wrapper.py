@@ -38,9 +38,9 @@ def get_account_history():
     agg_field = request.args.get('agg_field', "operation_type")
 
     if type != "data":
-        s = Search(using=es, index="graphene-*")
+        s = Search(using=es, index="bitshares-*")
     else:
-        s = Search(using=es, index="graphene-*", extra={"size": size, "from": from_})
+        s = Search(using=es, index="bitshares-*", extra={"size": size, "from": from_})
 
     q = Q()
     if account_id and operation_type:
@@ -79,7 +79,7 @@ def get_single_operation():
 
     operation_id = request.args.get('operation_id', "1.11.0")
 
-    s = Search(using=es, index="graphene-*", extra={"size": 1})
+    s = Search(using=es, index="bitshares-*", extra={"size": 1})
 
     q = Q("match", account_history__operation_id=operation_id)
 
@@ -98,7 +98,7 @@ def get_trx():
     from_ = request.args.get('from_', 0)
     size = request.args.get('size', 10)
 
-    s = Search(using=es, index="graphene-*", extra={"size": size, "from": from_})
+    s = Search(using=es, index="bitshares-*", extra={"size": size, "from": from_})
 
     q = Q("match", block_data__trx_id=trx)
 

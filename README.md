@@ -1,4 +1,4 @@
-ATTENTION: This wrapper was merged into https://github.com/oxarbitrage/bitshares-explorer-api Development will continue there.
+# ATTENTION: This wrapper was merged into https://github.com/oxarbitrage/bitshares-explorer-api Development will continue there.
 
 # Bitshares ElasticSearch Wrapper
 

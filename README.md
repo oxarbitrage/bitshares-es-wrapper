@@ -1,3 +1,5 @@
+ATTENTION: This wrapper was merged into https://github.com/oxarbitrage/bitshares-explorer-api Development will continue there.
+
 # Bitshares ElasticSearch Wrapper
 
 Wrapper for final user applications to interact with account data from the bitshares blockchain stored by  `bitshares-core` with `elasticsearch-plugin` running. 

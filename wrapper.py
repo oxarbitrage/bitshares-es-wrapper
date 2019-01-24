@@ -129,7 +129,7 @@ def is_alive():
         json_response["error"] = "index_not_found"
         json_response["query_index"] = find_string
 
-    return json_response
+    return jsonify(json_response)
 
 @app.route('/get_trx')
 def get_trx():
